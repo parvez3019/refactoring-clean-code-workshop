@@ -21,44 +21,23 @@ public class Customer {
 
   public String statement() {
     double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
-    for (Rental each : rentals) {
-      double thisAmount = 0;
-      //determine amounts for each line
-      switch (each.getMovie().getPriceCode()) {
-        case Movie.REGULAR:
-          thisAmount += 2;
-          if (each.getDaysRented() > 2)
-            thisAmount += (each.getDaysRented() - 2) * 1.5;
-          break;
-        case Movie.NEW_RELEASE:
-          thisAmount += each.getDaysRented() * 3;
-          break;
-        case Movie.CHILDRENS:
-          thisAmount += 1.5;
-          if (each.getDaysRented() > 3)
-            thisAmount += (each.getDaysRented() - 3) * 1.5;
-          break;
-      }
-      // add frequent renter points
-      frequentRenterPoints++;
-      // add bonus for a two day new release rental
-      if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-          &&
-          each.getDaysRented() > 1) frequentRenterPoints++;
+    int totalFrequentRenterPoints = 0;
+    String statement = "Rental Record for " + getName() + "\n";
+    for (Rental rental : rentals) {
+      totalFrequentRenterPoints += rental.frequentRenterPoints();
 
       //show figures for this rental
-      result += "\t" + each.getMovie().getTitle() + "\t" +
-          String.valueOf(thisAmount) + "\n";
-      totalAmount += thisAmount;
+      statement += "\t" + rental.getMovie().getTitle() + "\t" +
+          String.valueOf(rental.amount()) + "\n";
+      totalAmount += rental.amount();
     }
 
-    //add footer lines result
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints)
+    //add footer lines statement
+    statement += "Amount owed is " + String.valueOf(totalAmount) + "\n";
+    statement += "You earned " + String.valueOf(totalFrequentRenterPoints)
         + " frequent renter points";
-    return result;
+    return statement;
   }
+
 }
 
