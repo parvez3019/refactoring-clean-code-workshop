@@ -1,7 +1,8 @@
 build
 .idea
 .gradle
-gradle*
+gradle/*
+gradlew.bat
 .DS_Store
 out
 *.iml
