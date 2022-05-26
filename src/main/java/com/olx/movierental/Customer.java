@@ -20,45 +20,63 @@ public class Customer {
   }
 
   public String statement() {
-    double totalAmount = 0;
-    int frequentRenterPoints = 0;
-    String result = "Rental Record for " + getName() + "\n";
-    for (Rental each : rentals) {
-      double thisAmount = 0;
-      //determine amounts for each line
-      switch (each.getMovie().getPriceCode()) {
-        case Movie.REGULAR:
-          thisAmount += 2;
-          if (each.getDaysRented() > 2)
-            thisAmount += (each.getDaysRented() - 2) * 1.5;
-          break;
-        case Movie.NEW_RELEASE:
-          thisAmount += each.getDaysRented() * 3;
-          break;
-        case Movie.CHILDRENS:
-          thisAmount += 1.5;
-          if (each.getDaysRented() > 3)
-            thisAmount += (each.getDaysRented() - 3) * 1.5;
-          break;
-      }
-      // add frequent renter points
-      frequentRenterPoints++;
-      // add bonus for a two day new release rental
-      if ((each.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-          &&
-          each.getDaysRented() > 1) frequentRenterPoints++;
+    return statementHeader() + statementBody() + statementFooter();
+  }
 
-      //show figures for this rental
-      result += "\t" + each.getMovie().getTitle() + "\t" +
-          String.valueOf(thisAmount) + "\n";
-      totalAmount += thisAmount;
+  private String statementFooter() {
+    return "Amount owed is " + String.valueOf(totalAmount(rentals)) + "\n"
+            + "You earned " + String.valueOf(totalFrequentRenterPoints(rentals))
+            + " frequent renter points";
+  }
+
+  private String statementBody() {
+    String statement = "";
+    for (Rental rental : rentals) {
+      statement += "\t" + rental.getMovie().getTitle() + "\t" +
+              String.valueOf(rental.amount()) + "\n";
     }
+    return statement;
+  }
 
-    //add footer lines result
-    result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
-    result += "You earned " + String.valueOf(frequentRenterPoints)
-        + " frequent renter points";
-    return result;
+  private String statementHeader() {
+    return "Rental Record for " + getName() + "\n";
+  }
+
+  private int totalFrequentRenterPoints(List<Rental> rentals) {
+    int frequentRenterPoints = 0;
+    for (Rental rental : rentals) {
+      frequentRenterPoints += rental.frequentRenterPoint();
+    }
+    return frequentRenterPoints;
+  }
+
+  private double totalAmount(List<Rental> rentals) {
+    double totalAmount = 0;
+    for (Rental rental : rentals) {
+      totalAmount += rental.amount();
+    }
+    return totalAmount;
+  }
+
+  public String htmlStatement() {
+    return htmlStatementHeader() + htmlStatementBody() + htmlStatementFooter();
+  }
+
+  private String htmlStatementFooter() {
+    return "Amount owed is <b>" + totalAmount(rentals) + "</b><br/>" +
+            "You earned <b>" + totalFrequentRenterPoints(rentals) + "</b> frequent renter points";
+  }
+
+  private String htmlStatementBody() {
+    String statement = "";
+    for (Rental rental : rentals) {
+      statement += rental.getMovie().getTitle() + " " + rental.amount() + "<br/>";
+    }
+    return statement;
+  }
+
+  private String htmlStatementHeader() {
+    return "<h1>Rental Record for <b>" + getName() + "</b></h1><br/>";
   }
 }
 
