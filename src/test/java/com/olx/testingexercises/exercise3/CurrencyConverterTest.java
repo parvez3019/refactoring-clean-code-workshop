@@ -27,4 +27,12 @@ class CurrencyConverterTest {
         double result = currencyConverter.convert("USD", "INR", 100.0);
         assertEquals(0.0,result,0.01);
     }
+
+    @Test
+    public void testConvertWithInvalidCurrencyPair() {
+        when(mockExchangeRateService.getRate("USD", "INR")).thenReturn(83.0);
+        double result = currencyConverter.convert("USD", "INR", 100.0);
+        assertEquals(83.0,result,0.01);
+    }
+
 }
