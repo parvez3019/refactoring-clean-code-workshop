@@ -28,6 +28,6 @@ public class OrderProcessorTest {
 
         processor.processOrder("123");
 
-        verify(mockService).send("Order 123 processed");
+        verify(mockService,times(1)).send("Order 123 processed");
     }
 }
