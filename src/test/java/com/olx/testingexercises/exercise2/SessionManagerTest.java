@@ -14,6 +14,8 @@ class SessionManagerTest {
 
     @Test
     void endSession() {
+        SessionManager sessionManager = new SessionManager();
+        sessionManager.endSession();
     }
 
     @Test
