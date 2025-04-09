@@ -4,6 +4,7 @@ public class InvoiceService {
     private final PaymentGateway gateway;
 
     public InvoiceService(PaymentGateway gateway) {
+
         this.gateway = gateway;
     }
 

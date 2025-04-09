@@ -30,7 +30,4 @@ class UserRegistrationTest {
 
         verify(mockemailService, times(2)).sendEmail(email, "Welcome " + email);
     }
-
-
-
 }
