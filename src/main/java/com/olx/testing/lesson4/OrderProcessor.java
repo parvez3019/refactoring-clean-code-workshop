@@ -1,15 +1,16 @@
 package com.olx.testing.lesson4;
 
 public class OrderProcessor {
-    private final NotificationService service;
+    private NotificationService notificationService;
 
-    public OrderProcessor(NotificationService service) {
-        this.service = service;
+    public OrderProcessor(NotificationService notificationService) {
+        this.notificationService = notificationService;
     }
 
-    public void processOrder(String orderId) {
-        // some logic
-        service.send("Order " + orderId + " processed");
+    public int processOrder(String orderId) {
+        System.out.println("Processing order " + orderId);
+        notificationService.send("Order " + orderId + " processed");
+        return 1;
     }
 }
 
