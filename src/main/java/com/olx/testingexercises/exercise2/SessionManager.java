@@ -4,14 +4,17 @@ public class SessionManager {
     private boolean active;
 
     public void startSession() {
+
         active = true;
     }
 
     public void endSession() {
+
         active = false;
     }
 
     public boolean isSessionActive() {
+
         return active;
     }
 }
