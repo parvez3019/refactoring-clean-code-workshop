@@ -1,14 +1,14 @@
 package com.olx.testingexercises.exercise2;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SessionManagerTest {
     SessionManager sessionManager;
-    @Before
+    @BeforeEach
     public void beginSession() {
         sessionManager = new SessionManager();
         assertFalse(sessionManager.isSessionActive());
@@ -20,7 +20,7 @@ public class SessionManagerTest {
         assertTrue(sessionManager.isSessionActive());
     }
 
-    @After
+    @AfterEach
     public void endSession() {
         sessionManager.endSession();
         assertFalse(sessionManager.isSessionActive());
