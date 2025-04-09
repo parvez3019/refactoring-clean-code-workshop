@@ -16,5 +16,8 @@ class TemperatureConverterTest {
 
     @Test
     void fahrenheitToCelsius() {
+        TemperatureConverter converter = new TemperatureConverter();
+        assertEquals(37.0, converter.fahrenheitToCelsius(98.6), 0.1);
+        assertEquals(0.0, converter.fahrenheitToCelsius(32.0), 0.1);
     }
 }
