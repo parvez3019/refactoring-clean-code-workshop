@@ -20,6 +20,7 @@ public class UserRegistrationTest {
     public void userRegistrationOnce() {
         String user = "userName";
         userRegistration.register(user);
+
         verify(mockedEmailService,times(1)).sendEmail(user, "Welcome " + user);
     }
 
@@ -27,6 +28,7 @@ public class UserRegistrationTest {
     public void twoUsersRegistration() {
         userRegistration.register("Pravaz");
         userRegistration.register("Ravi");
+
         verify(mockedEmailService,times(2)).sendEmail(any(), any());
     }
 
@@ -35,6 +37,7 @@ public class UserRegistrationTest {
         String user = "userName";
         userRegistration.register(user);
         userRegistration.register(user);
+
         verify(mockedEmailService,times(2)).sendEmail(user, "Welcome " + user);
     }
 

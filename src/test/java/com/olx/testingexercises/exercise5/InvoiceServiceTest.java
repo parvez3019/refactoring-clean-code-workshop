@@ -28,7 +28,15 @@ public class InvoiceServiceTest {
     public void shouldGenerateInvoice() {
         when(gateway.process(userId, amount)).thenReturn(true);
         String invoiceStatus = invoiceService.generateInvoice(userId, amount);
+
         assertEquals("Invoice generated for: " + userId, invoiceStatus);
+    }
+
+    @Test
+    public void shouldGenerateInvoiceWithSingleInvocation() {
+        when(gateway.process(userId, amount)).thenReturn(true);
+        invoiceService.generateInvoice(userId, amount);
+
         verify(gateway, times(1)).process(userId, amount);
     }
 
@@ -36,7 +44,15 @@ public class InvoiceServiceTest {
     public void shouldNotGenerateInvoice() {
         when(gateway.process(userId, amount)).thenReturn(false);
         String invoiceStatus = invoiceService.generateInvoice(userId, amount);
+
         assertEquals("Payment failed for: " + userId, invoiceStatus);
+    }
+
+    @Test
+    public void shouldNotGenerateInvoiceWithSingleInvocation() {
+        when(gateway.process(userId, amount)).thenReturn(false);
+        invoiceService.generateInvoice(userId, amount);
+
         verify(gateway, times(1)).process(userId, amount);
     }
 
