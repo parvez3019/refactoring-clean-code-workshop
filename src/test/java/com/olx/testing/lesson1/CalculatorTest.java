@@ -1,15 +1,23 @@
 package com.olx.testing.lesson1;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculatorTest {
 
     @Test
-    public void testAdd() {
-        Calculator calc = new Calculator();
-        int result = calc.add(2, 3);
-        assertEquals(5, result); // Assertion
+    public void shouldSuccessfullyAddTwoPositiveNumber() {
+        // Arrange
+        int number1 = 2;
+        int number2 = 3;
+        Calculator calculator = new Calculator();
+
+        // Act
+        int addedResult = calculator.add(number1, number2);
+
+        // Assert
+        assertEquals(5, addedResult);
     }
 }

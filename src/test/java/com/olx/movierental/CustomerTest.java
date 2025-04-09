@@ -1,10 +1,10 @@
 package com.olx.movierental;
 
 import org.junit.Test;
-
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CustomerTest {
+
     @Test
     public void shouldGenerateTextStatement() {
         Customer customer = new Customer("Utsav");
