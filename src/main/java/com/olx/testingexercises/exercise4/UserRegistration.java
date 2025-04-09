@@ -4,6 +4,7 @@ public class UserRegistration {
     private final EmailService emailService;
 
     public UserRegistration(EmailService emailService) {
+
         this.emailService = emailService;
     }
 
