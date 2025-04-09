@@ -50,7 +50,7 @@ public class InvoiceServiceTest {
 
         String invoiceStatus = invoiceService.generateInvoice(userId, amount);
 
-        assertEquals(expectedInvoiceStatus + userId, invoiceStatus);
+        assertEquals(expectedInvoiceStatus, invoiceStatus);
     }
 
     @Test
