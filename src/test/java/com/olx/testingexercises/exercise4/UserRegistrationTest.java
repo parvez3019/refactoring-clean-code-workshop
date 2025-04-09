@@ -19,6 +19,7 @@ public class UserRegistrationTest {
     @Test
     public void userRegistrationOnce() {
         String user = "userName";
+
         userRegistration.register(user);
 
         verify(mockedEmailService,times(1)).sendEmail(user, "Welcome " + user);
@@ -35,6 +36,7 @@ public class UserRegistrationTest {
     @Test
     public void userRegistrationTwice() {
         String user = "userName";
+
         userRegistration.register(user);
         userRegistration.register(user);
 
