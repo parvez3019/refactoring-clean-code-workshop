@@ -20,5 +20,10 @@ class SessionManagerTest {
 
     @Test
     void isSessionActive() {
+        SessionManager sessionManager = new SessionManager();
+        assertFalse(sessionManager.isSessionActive());
+        sessionManager.startSession();
+        assertTrue(sessionManager.isSessionActive());
+        sessionManager.endSession();
     }
 }
