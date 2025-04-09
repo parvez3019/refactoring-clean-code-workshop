@@ -13,5 +13,12 @@ public class SessionManagerTest {
         sessionManager = new SessionManager();
         sessionManager.startSession();
     }
+    @AfterEach
+    public void tearDown() {
+        sessionManager.endSession();
+    }
+    @Test
+    public void testStartSession(){
 
+    }
 }
