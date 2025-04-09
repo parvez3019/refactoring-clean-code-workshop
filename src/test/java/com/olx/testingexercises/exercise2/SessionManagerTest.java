@@ -19,6 +19,6 @@ public class SessionManagerTest {
     }
     @Test
     public void testStartSession(){
-
+        assertTrue(sessionManager.isSessionActive());
     }
 }
