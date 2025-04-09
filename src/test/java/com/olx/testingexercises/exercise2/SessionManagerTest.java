@@ -21,4 +21,9 @@ public class SessionManagerTest {
     public void testStartSession(){
         assertTrue(sessionManager.isSessionActive());
     }
+    @Test
+    public void testEndSession(){
+        sessionManager.endSession();
+        assertFalse(sessionManager.isSessionActive());
+    }
 }
