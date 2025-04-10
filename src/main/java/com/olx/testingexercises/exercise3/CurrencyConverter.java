@@ -10,7 +10,6 @@ public class CurrencyConverter {
     public double convert(String from, String to, double amount) {
         return amount * rateService.getRate(from, to);
     }
-
 }
 
 /*

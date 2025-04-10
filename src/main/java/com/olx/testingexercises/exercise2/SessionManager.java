@@ -1,5 +1,7 @@
 package com.olx.testingexercises.exercise2;
 
+import java.util.function.Supplier;
+
 public class SessionManager {
     private boolean active;
 
