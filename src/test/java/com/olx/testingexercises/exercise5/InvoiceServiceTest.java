@@ -16,22 +16,22 @@ class InvoiceServiceTest {
         invoiceService = new InvoiceService(mockpaymentGateway);
     }
     @Test
-    void processPayment() {
+    void WhenPaymentSuccessful() {
         String userid = "user1234";
         double amount = 1000.0;
         when(mockpaymentGateway.process(userid, amount)).thenReturn(true);
-        String result = invoiceService.generateInvoice(userid,amount);
-        assertEquals("Invoice generated for: " + userid ,result);
+        String message = invoiceService.generateInvoice(userid,amount);
+        assertEquals("Invoice generated for: " + userid ,message);
         verify(mockpaymentGateway,times(1)).process(userid,amount);
     }
 
     @Test
-    void processPaymentfailed() {
+    void whenPaymentUnsuccessful() {
         String userid = "user1234";
         double amount = 1000.0;
         when(mockpaymentGateway.process(userid, amount)).thenReturn(false);
-        String result = invoiceService.generateInvoice(userid,amount);
-        assertEquals("Payment failed for: " + userid ,result);
+        String message = invoiceService.generateInvoice(userid,amount);
+        assertEquals("Payment failed for: " + userid ,message);
         verify(mockpaymentGateway,times(1)).process(userid,amount);
     }
 }
