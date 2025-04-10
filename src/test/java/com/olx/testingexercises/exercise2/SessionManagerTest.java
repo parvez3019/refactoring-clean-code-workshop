@@ -15,20 +15,26 @@ class SessionManagerTest {
 
     @Test
     void startSession() {
-        sessionManager.startSession();
+        Boolean isActive = sessionManager.isSessionActive();
+        assertEquals(false,isActive);
+    }
+
+    @Test
+    void startSessionFail() {
         Boolean isActive = sessionManager.isSessionActive();
         assertEquals(true,isActive);
     }
 
     @Test
     void endSession() {
-        sessionManager.endSession();
         Boolean isActive = sessionManager.isSessionActive();
-        assertEquals(false,isActive);
+        assertEquals(true,isActive);
     }
 
     @Test
-    void isSessionActive() {
+    void endSessionFailed() {
+        Boolean isActive = sessionManager.isSessionActive();
+        assertEquals(false,isActive);
     }
 
     @AfterEach

@@ -20,9 +20,12 @@ class UserRegistrationTest {
     @Test
     void register() {
         String user = "test@test.com";
+
         userRegistration.register(user);
+
         verify(mockEmailService, times(1)).sendEmail(user, "Welcome " + user);
     }
+
     @Test
     void register_nullUser() {
         String user = "test@test.com";

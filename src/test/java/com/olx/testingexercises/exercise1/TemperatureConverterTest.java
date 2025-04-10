@@ -30,7 +30,4 @@ class TemperatureConverterTest {
         temperatureConverter = null;
     }
 
-
-
-
 }
