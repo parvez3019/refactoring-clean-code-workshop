@@ -17,9 +17,14 @@ public class AccountTest {
     @Test
     public void testDeposit() {
         account.deposit(100);
-        assertEquals(100, account.getBalance());
+        account.deposit(200);
+        assertEquals(300, account.getBalance());
     }
-
+    @Test
+    public void testDeposit1() {
+        account.deposit(200);
+        assertEquals(200, account.getBalance());
+    }
     @AfterEach
     public void tearDown() {
         account = null;
