@@ -11,12 +11,10 @@ public class TemperatureConverter {
 }
 
 /*
-
 Tasks:
 - Write unit tests for both methods with:
 - Normal values (0, 100, etc.)
 - Edge case: negative temperature
 - Assert that values are accurate within 0.01 using assertEquals(expected, actual, delta)
 - Use @BeforeEach to reuse the instance of the class.
-
 */
