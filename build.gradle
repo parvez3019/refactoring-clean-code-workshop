@@ -9,13 +9,17 @@ repositories {
     mavenCentral()
 }
 
-test {
-    useJUnitPlatform()
+dependencies {
+    // JUnit 5 dependencies (JUnit Jupiter for JUnit 5)
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+
+    // Mockito dependencies
+    testImplementation 'org.mockito:mockito-core:3.12.4'  // Use a more recent version of Mockito
+    testImplementation 'org.mockito:mockito-junit-jupiter:3.12.4'  // Mockito extension for JUnit 5
 }
 
-dependencies {
-    testImplementation("org.mockito:mockito-core:5.17.0")
-    testImplementation("org.mockito:mockito-junit-jupiter:2.17.0")
-    testImplementation('org.junit.jupiter:junit-jupiter-api:5.3.1')
-    testImplementation('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+// Ensure that Gradle uses JUnit Platform for running tests (JUnit 5)
+test {
+    useJUnitPlatform()
 }
