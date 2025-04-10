@@ -15,8 +15,5 @@ class InvoiceServiceTest {
 
         String status=invoiceService.generateInvoice("12",5);
         assertEquals("Invoice generated for: 12",status);
-
-
-
     }
 }

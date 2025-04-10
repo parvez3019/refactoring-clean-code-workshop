@@ -8,14 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TemperatureConverterTest {
-//    @BeforeClass
-//    public static void beforeClass() throws Exception {
-//
-//    }
-//    @BeforeAll
-//    public static void beforeAll() throws Exception {
-//
-//    }
+
     @Test
     public void celsiusToFahrenheit() {
         TemperatureConverter temperatureConverter = new TemperatureConverter();
