@@ -32,12 +32,14 @@ public class StringExampleTest {
 
     @Test
     public void testReverse() {
+        StringExample util = new StringExample();
         assertEquals("cba", util.reverse("abc"));
     }
 
     @Test
     public void testReverseNullInput() {
-        assertThrows(InvalidStringException.class, () -> util.reverse(null));
+        StringExample util = new StringExample();
+        assertThrows(IllegalArgumentException.class, () -> util.reverse(null));
     }
 
 }
