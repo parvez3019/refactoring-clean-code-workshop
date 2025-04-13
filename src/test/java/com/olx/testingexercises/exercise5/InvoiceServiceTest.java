@@ -1,10 +1,6 @@
 package com.olx.testingexercises.exercise5;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.stubbing.OngoingStubbing;
-import org.mockito.verification.VerificationMode;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -12,26 +8,26 @@ import static org.mockito.Mockito.*;
 class InvoiceServiceTest {
 
     @Test
-    void generateInvoice() {
+    void generateInvoiceFailedPayment() {
         PaymentGateway paymentGateway = mock(PaymentGateway.class);
-        when(paymentGateway.process(anyString(), anyDouble())).thenReturn(false);
-
+        when(paymentGateway.process("user1", 100.0)).thenReturn(false);
         InvoiceService invoiceService = new InvoiceService(paymentGateway);
+
         String result = invoiceService.generateInvoice("user1", 100.0);
 
         assertEquals("Payment failed for: user1", result);
-        verify(paymentGateway, times(1)).process(anyString(), anyDouble());
+        verify(paymentGateway).process("user1", 100.0);
     }
 
     @Test
-    void generateInvoiceSuccessful() {
+    void generateInvoiceSuccessfulPayment() {
         PaymentGateway paymentGateway = mock(PaymentGateway.class);
-        when(paymentGateway.process(anyString(), anyDouble())).thenReturn(true);
-
+        when(paymentGateway.process("user1", 100.0)).thenReturn(true);
         InvoiceService invoiceService = new InvoiceService(paymentGateway);
+
         String result = invoiceService.generateInvoice("user1", 100.0);
 
         assertEquals("Invoice generated for: user1", result);
-        verify(paymentGateway, times(1)).process(anyString(), anyDouble());
+        verify(paymentGateway).process("user1", 100.0);
     }
 }
