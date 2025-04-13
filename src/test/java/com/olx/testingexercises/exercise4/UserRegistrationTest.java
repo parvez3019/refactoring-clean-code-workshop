@@ -16,6 +16,7 @@ class UserRegistrationTest {
         userRegistration.register(firstUser);
         userRegistration.register(secondUser);
 
-        verify(emailService, times(2)).sendEmail(anyString(), anyString());
+        verify(emailService).sendEmail(firstUser, "Registration confirmation");
+        verify(emailService).sendEmail(secondUser, "Registration confirmation");
     }
 }
