@@ -1,6 +1,6 @@
 package com.olx.testingexercises.exercise4;
 
-public class   UserRegistration {
+public class UserRegistration {
     private final EmailService emailService;
 
     public UserRegistration(EmailService emailService) {

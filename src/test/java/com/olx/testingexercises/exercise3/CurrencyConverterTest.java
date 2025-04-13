@@ -16,7 +16,6 @@ class CurrencyConverterTest {
         double expected = 100 * 0.0;
 
         assertEquals(expected,result);
-
         verify(rateService, times(1)).getRate("INR", "USD");
     }
 }

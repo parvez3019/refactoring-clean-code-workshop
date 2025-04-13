@@ -15,28 +15,56 @@ class TemperatureConverterTest {
     }
 
     @Test
-    void celsiusToFahrenheit() {
-        double celsius1 = 0, celsius2 = 100, celsius3 = -40;
+    void celsiusToFahrenheitZeroCheck() {
+        double celsius = 0;
 
-        double fahrenheit1 = converter.celsiusToFahrenheit(celsius1);
-        double fahrenheit2 = converter.celsiusToFahrenheit(celsius2);
-        double fahrenheit3 = converter.celsiusToFahrenheit(celsius3);
+        double fahrenheit = converter.celsiusToFahrenheit(celsius);
 
-        assertEquals(32, fahrenheit1, 0.01);
-        assertEquals(212, fahrenheit2, 0.01);
-        assertEquals(-40, fahrenheit3, 0.01);
+        assertEquals(32, fahrenheit, 0.01);
     }
 
     @Test
-    void fahrenheitToCelsius() {
-        double fahrenheit1 = 32, fahrenheit2 = 212, fahrenheit3 = -40;
+    void celsiusToFahrenheitPositiveCheck() {
+        double celsius = 100;
 
-        double celsius1 = converter.fahrenheitToCelsius(fahrenheit1);
-        double celsius2 = converter.fahrenheitToCelsius(fahrenheit2);
-        double celsius3 = converter.fahrenheitToCelsius(fahrenheit3);
+        double fahrenheit = converter.celsiusToFahrenheit(celsius);
 
-        assertEquals(0, celsius1, 0.01);
-        assertEquals(100, celsius2, 0.01);
-        assertEquals(-40, celsius3, 0.01);
+        assertEquals(212, fahrenheit, 0.01);
+    }
+
+    @Test
+    void celsiusToFahrenheitNegativeCheck() {
+        double celsius = -40;
+
+        double fahrenheit = converter.celsiusToFahrenheit(celsius);
+
+        assertEquals(-40, fahrenheit, 0.01);
+    }
+
+    @Test
+    void fahrenheitToCelsiusZeroCheck() {
+        double fahrenheit = 32;
+
+        double celsius = converter.fahrenheitToCelsius(fahrenheit);
+
+        assertEquals(0, celsius, 0.01);
+    }
+
+    @Test
+    void fahrenheitToCelsiusPositiveCheck() {
+        double fahrenheit = 212;
+
+        double celsius = converter.fahrenheitToCelsius(fahrenheit);
+
+        assertEquals(100, celsius, 0.01);
+    }
+
+    @Test
+    void fahrenheitToCelsiusNegativeCheck() {
+        double fahrenheit = -40;
+
+        double celsius = converter.fahrenheitToCelsius(fahrenheit);
+
+        assertEquals(-40, celsius, 0.01);
     }
 }
