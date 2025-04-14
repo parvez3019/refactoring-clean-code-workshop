@@ -1,10 +1,9 @@
 package com.olx.testingexercises.exercise1;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
-
-public class TemperatureConverterTest {
+import static org.junit.jupiter.api.Assertions.*;
+class TemperatureConverterTest {
 
     @Test
     public void shouldSuccessfullyConvertToFahrenheit() {
@@ -32,8 +31,4 @@ public class TemperatureConverterTest {
         //Assert
         assertEquals(2.777, convertedToCelsius, 0.001);
     }
-
-
-
-
 }
